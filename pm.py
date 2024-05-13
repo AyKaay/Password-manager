@@ -1,10 +1,21 @@
 import sqlite3
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QWidget
 import nacl.secret
 import nacl.utils
 from hashlib import sha256
+from PyQt5.QtWidgets import *
+from PyQt5 import uic
 
 # TODO Create GUI for the PWM
+class PWGUI(QMainWindow):
+    def __init__(self, parent: QWidget | None = ..., flags: Qt.WindowFlags | Qt.WindowType = ...) -> None:
+        super().__init__(self)
+        super(PWGUI, self).__init__()
+        uic.loadUi("PWGUI.ui", self)
+        self.show()
 
+# Initializing sqlite3 db
 connection = sqlite3.connect("passworddatabase.db")
 cursor = connection.cursor()
 cursor.execute("CREATE TABLE IF NOT EXISTS passworddatabase (ID INTEGER PRIMARY KEY AUTOINCREMENT,EMAIL TEXT, PASSWORD TEXT)")
